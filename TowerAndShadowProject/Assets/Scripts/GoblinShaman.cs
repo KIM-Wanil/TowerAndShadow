@@ -19,7 +19,8 @@ public class GoblinShaman : AutoBattleUnit
     protected override void SetupStat()
     {
         string fileName = "GoblinShamanStat";
-        string path = Application.dataPath + "/Resources/Data/" + fileName + ".Json";
+        //string path = Application.dataPath + "/Resources/Data/" + fileName + ".Json";
+        string path = Application.streamingAssetsPath + "/Data/" + fileName + ".Json";
         string data = File.ReadAllText(path);
         stat = JsonUtility.FromJson<Stat>(data);
         fireBall = Resources.Load<GameObject>("Prefabs/Skill&Attack/FireBall");

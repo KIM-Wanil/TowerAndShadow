@@ -36,4 +36,8 @@ public class GameManager : Singleton<GameManager>
     {
         isCombating = false;
     }
+    public void ssibal()
+    {
+        this.gameObject.SetActive(false);
+    }
 }

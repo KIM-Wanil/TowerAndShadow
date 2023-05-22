@@ -72,7 +72,7 @@ public class Drag : MonoBehaviour
 
             Vector3 temp = getContactPoint(normal, planeDot, A, B);
             Vector3 setPos = hitPos.transform.position;
-            Mathf.Clamp(setPos.x, 0, 9);
+            Mathf.Clamp(setPos.x, -2, 11);
             setPos.x = temp.x;
             setPos.z = temp.z;
             hitPos.transform.position = setPos;
@@ -139,7 +139,7 @@ public class Drag : MonoBehaviour
         {
             tempPos.z = 0;
         }
-        else if (this.transform.position.z <= -1 && this.transform.position.z > -2)
+        else if (this.transform.position.z < -1 && this.transform.position.z > -2)
         {
             tempPos.z = -2;
         }

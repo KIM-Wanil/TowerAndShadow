@@ -12,7 +12,8 @@ public class GoblinWarrior : AutoBattleUnit
     protected override void SetupStat()
     {
         string fileName = "GoblinWarriorStat";
-        string path = Application.dataPath + "/Resources/Data/" + fileName + ".Json";
+        //string path = Application.dataPath + "/Resources/Data/" + fileName + ".Json";
+        string path = Application.streamingAssetsPath + "/Data/" + fileName + ".Json";
         string data = File.ReadAllText(path);
         stat = JsonUtility.FromJson<Stat>(data);
 

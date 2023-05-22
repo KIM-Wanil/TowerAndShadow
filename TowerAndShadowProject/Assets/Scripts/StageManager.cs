@@ -240,10 +240,10 @@ public class StageManager : Singleton<StageManager>
         maxUnitCount = 1;
         shopButtons = new GameObject[4];
         shopButtonsPos = new Vector2[4];
-        shopButtonsPos[0] = new Vector2(350f, 550f);
-        shopButtonsPos[1] = new Vector2(750f, 550f);
-        shopButtonsPos[2] = new Vector2(1150f, 550f);
-        shopButtonsPos[3] = new Vector2(1550f, 550f);
+        shopButtonsPos[0] = new Vector2(-525f, 0f);
+        shopButtonsPos[1] = new Vector2(-175f, 0f);
+        shopButtonsPos[2] = new Vector2(175f, 0f);
+        shopButtonsPos[3] = new Vector2(525f, 0f);
 
         skillPanel = GameObject.Find("Canvas").transform.Find("SkillPanel").gameObject;
         skillButton = Resources.Load<GameObject>("Prefabs/Button/SkillButton");
@@ -684,7 +684,7 @@ public class StageManager : Singleton<StageManager>
         }
         
         if (stageCount == 1) SetStage1();
-        if (stageCount == 2) SetStage2();
+        else if (stageCount == 2) SetStage2();
         else if (stageCount == 3) SetStage3();
         else if (stageCount == 4) SetStage4();
         else if (stageCount == 5) SetStage5();
@@ -872,6 +872,7 @@ public class StageManager : Singleton<StageManager>
     }
     public void StartStage()
     {
+        GameManager.instance.SetIsCombating(true);
         TeamEnemyUnits = TeamEnemy.GetComponentsInChildren<AutoBattleUnit>();
         TeamPlayerUnits = TeamPlayer.GetComponentsInChildren<AutoBattleUnit>();
         TeamPlayerBenchUnits = TeamPlayerBench.GetComponentsInChildren<AutoBattleUnit>();
@@ -917,7 +918,7 @@ public class StageManager : Singleton<StageManager>
         }
         UsedPassiveSkills.Clear();
         currentShadowPoint = 0;
-        GameManager.instance.SetIsCombating(true);
+        
     }
     public void VictoryStage()
     {
@@ -968,6 +969,7 @@ public class StageManager : Singleton<StageManager>
         }
         shop = new GameObject("shop");
         shop.transform.SetParent(pickPanel.transform);
+        shop.transform.localPosition = new Vector3(0f, 0f, 0f);
         if (currentMessageIndex == 8 || currentMessageIndex == 15)
         {
             SetTutorial();
@@ -1187,7 +1189,7 @@ public class StageManager : Singleton<StageManager>
         unit[2].transform.position = new Vector3(5f, 0f, 5f);
         unit[2].GetComponent<AutoBattleUnit>().LevelUp();
         unit[3] = Instantiate(goblinWarrior, TeamEnemy.transform);
-        unit[3].transform.position = new Vector3(5f, 0f, 5f);
+        unit[3].transform.position = new Vector3(7f, 0f, 5f);
         unit[3].GetComponent<AutoBattleUnit>().LevelUp();
         unit[4] = Instantiate(goblinRogue, TeamEnemy.transform);
         unit[4].transform.position = new Vector3(5f, 0f, 8f);
@@ -1203,7 +1205,7 @@ public class StageManager : Singleton<StageManager>
         unit[1].transform.position = new Vector3(9f, 0f, 8f);
         unit[1].GetComponent<AutoBattleUnit>().LevelUp();
         unit[2] = Instantiate(goblinWarrior, TeamEnemy.transform);
-        unit[2].transform.position = new Vector3(5f, 0f, 5f);
+        unit[2].transform.position = new Vector3(7f, 0f, 5f);
         unit[2].GetComponent<AutoBattleUnit>().LevelUp();
         unit[3] = Instantiate(goblinWarrior, TeamEnemy.transform);
         unit[3].transform.position = new Vector3(5f, 0f, 5f);
@@ -1211,7 +1213,7 @@ public class StageManager : Singleton<StageManager>
         unit[4] = Instantiate(goblinRogue, TeamEnemy.transform);
         unit[4].transform.position = new Vector3(5f, 0f, 8f);
         unit[4] = Instantiate(goblinRogue, TeamEnemy.transform);
-        unit[4].transform.position = new Vector3(5f, 0f, 8f);
+        unit[4].transform.position = new Vector3(6f, 0f, 8f);
     }
     public void SetStage9()
     {

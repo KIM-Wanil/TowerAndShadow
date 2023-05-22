@@ -18,7 +18,8 @@ public class AutoBattleUnit : MonoBehaviour, ICore
     protected NavMeshAgent pathFinder;
     protected Animator Animator;
     public int gameCode = -1;
-    
+
+    [Serializable]
     public class Stat
     {
         public string name;

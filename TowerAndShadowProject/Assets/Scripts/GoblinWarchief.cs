@@ -17,7 +17,8 @@ public class GoblinWarchief : AutoBattleUnit
     protected override void SetupStat()
     {
         string fileName = "GoblinWarchiefStat";
-        string path = Application.dataPath + "/Resources/Data/" + fileName + ".Json";
+        //string path = Application.dataPath + "/Resources/Data/" + fileName + ".Json";
+        string path = Application.streamingAssetsPath + "/Data/" + fileName + ".Json";
         string data = File.ReadAllText(path);
         stat = JsonUtility.FromJson<Stat>(data);
         axeSkill = Resources.Load<GameObject>("Prefabs/Skill&Attack/AxeSkill");

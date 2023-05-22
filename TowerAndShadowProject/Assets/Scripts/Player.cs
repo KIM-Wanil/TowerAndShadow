@@ -6,6 +6,8 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using Rito.BehaviorTree;
 using static Rito.BehaviorTree.NodeHelper;
+using LitJson;
+
 
 public class Player : AutoBattleUnit
 {
@@ -34,10 +36,17 @@ public class Player : AutoBattleUnit
     protected override void SetupStat()
     {
         string fileName = "PlayerStat";
-        string path = Application.dataPath + "/Resources/Data/" + fileName + ".Json";
+        //string path = Application.dataPath + "/Resources/Data/" + fileName + ".Json";
+        string path = Application.streamingAssetsPath + "/Data/" + fileName + ".Json";
         string data = File.ReadAllText(path);
         stat = JsonUtility.FromJson<Stat>(data);
+
+        //var jsonTextFile = Resources.Load<TextAsset>("Data/" + fileName);
+        //stat = JsonMapper.ToObject<Stat>(jsonTextFile.ToString());
+
+
         darkSkill = Resources.Load<GameObject>("Prefabs/Skill&Attack/DarkSkill");
+        transform.position = new Vector3(1f, 0f, -2f);
     }
 
     protected override void Update()
